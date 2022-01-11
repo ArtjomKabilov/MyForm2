@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,10 @@ namespace MyVorm
         TableLayoutPanel tlp = new TableLayoutPanel();
         Button btn_tabel;
         int btn_w, btn_h;
+        private int _x;
+        private int _y;
+        private string bought;
+
         public room()
         { }
         public room(string title, string body, string button1, string button2, string button3)
@@ -55,6 +60,28 @@ namespace MyVorm
             message.Location = new System.Drawing.Point(10, 10);
             message.Text = body;
             this.Controls.Add(message);
+        }
+        public room(int x, int y)
+        {
+            _x = x;
+            _y = y;
+            using (StreamWriter w = new StreamWriter("../../info.txt", true)) 
+            {
+                w.Write(""); 
+            }
+            using (StreamReader r = new StreamReader("../../info.txt"))
+            {
+                int counter = 0;
+                string[] tickets = r.ReadToEnd().Split(',');
+                bought = "";
+
+                foreach (var item in tickets)
+                {
+                    bought += tickets;
+                    counter++;
+                }
+            }
+
         }
 
         private void Room_Click1(object sender, EventArgs e)

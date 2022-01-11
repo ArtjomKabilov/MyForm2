@@ -13,6 +13,8 @@ namespace MyVorm
         
         TableLayoutPanel tlp = new TableLayoutPanel();
         Button btn_tabel;
+
+
         public saal(int read, int kohad)
         {
             
@@ -37,7 +39,7 @@ namespace MyVorm
                     btn_tabel = new Button
                     {
                         Text = String.Format($"{r + 1}{k + 1}"),
-                        Name = String.Format($"btn_{r}{k}"),
+                        Name = String.Format($"{r}{k}"),
                         Dock = DockStyle.Fill,
                         BackColor = Color.LightGreen
                     };
@@ -51,14 +53,29 @@ namespace MyVorm
             //this.tlp.Size = new System.Drawing.Size(tlp.ColumnCount*btn_w*3,tlp.RowCount * btn_h*2);
             this.Controls.Add(tlp);
 
+
         }
 
         private void Btn_tabel_MouseClick(object sender, MouseEventArgs e)
-        {
+        {   
             Button b = sender as Button;
-            b.BackColor = Color.Red;
-            
-        }
+            b.BackColor = Color.Yellow;
+            var answer = MessageBox.Show(
+         "Хотите купить место",
+         "Сообщение",
+         MessageBoxButtons.YesNo,
+         MessageBoxIcon.Information,
+         MessageBoxDefaultButton.Button1,
+         MessageBoxOptions.DefaultDesktopOnly);
+            if (answer == DialogResult.Yes)
+            {
+                b.BackColor = Color.Red;
+            }
+            else
+            {
+                b.BackColor = Color.LightGreen;
+            }
 
+        }
     }
 }
